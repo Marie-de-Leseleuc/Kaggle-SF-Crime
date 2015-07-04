@@ -1,0 +1,26 @@
+#packages
+install.packages("ggplot2")
+require(ggplot2)
+
+
+#set up working directory
+setwd("C:/Users/guill_000/Dropbox/Kaggle/SF Crime")
+
+
+#load data
+
+train <- read.csv("train.csv")
+test <- read.csv("test.csv")
+
+
+#descriptive statistics
+
+str(train)
+
+crime.freq <- ggplot(train, aes(x=Category))
+
+## plot category histograms
+
+crime.freq + geom_histogram() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) #frequency
+
+crime.freq + geom_bar(aes(y = (..count..)/sum(..count..)*100)) +  ylab("Percentage") #percentage
