@@ -24,3 +24,10 @@ crime.freq <- ggplot(train, aes(x=Category))
 crime.freq + geom_histogram() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) #frequency
 
 crime.freq + geom_bar(aes(y = (..count..)/sum(..count..)*100)) +  ylab("Percentage") #percentage
+
+
+##first model : predict all category as LARCENY/THEFT, according to the highest crime frequency
+
+submission$LARCENY.THEFT <- 1
+
+write.csv(submission, file = "allLarcenyTheft.csv", row.names = FALSE)
