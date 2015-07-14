@@ -135,9 +135,7 @@ combi$Street[grepl("/", as.character(combi$Address)) == TRUE] <- "INTERSECTION"
 
 # Let's create a new category for the crimes
 
-
 sort(unique(combi$Category))
-
 
 combi$Type[combi$Category %in% c("FRAUD", "FORGERY/COUNTERFEITING", "BAD CHECKS" , "EXTORTION", "EMBEZZLEMENT", 
                                              "SUSPICIOUS OCC","BRIBERY")] <- "White Colar Crime"
@@ -169,7 +167,6 @@ combi$Type[combi$Category == "NON-CRIMINAL"] <- "Non Criminal"
 #other_crime=c("MISSING PERSON", "RUNAWAY", "FAMILY OFFENSES", "SEX OFFENSES NON FORCIBLE",
 #              "PORNOGRAPHY/OBSCENE MAT", "WEAPON LAWS", "DRUNKENNESS", "SUICIDE", "TREA",
 #              "DRUG/NARCOTIC", "SEX OFFENSES FORCIBLE",  "LOITERING")
-
 
 # Back to factor
 
@@ -213,6 +210,8 @@ library(rpart)
 fit <- rpart(Category ~ Hours + DayOfWeek + PdDistrict + Address + Loc + Period + 
                Housing + Season + Street + Type + Month + Year + Day , data = train, method = "class"
              , control = rpart.control(minsplit = 200,cp=0))
+
+# Represent the tree
 
 library(rattle)
 library(rpart.plot)
