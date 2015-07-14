@@ -46,7 +46,7 @@ combi$Week <- format(combi$Dates2,'%W')
 
 # Create a Location variable 
 
-Loc <- paste0('(',round(combi$X,2),',',round(combi$Y,2),')') 
+combi$Loc <- paste0('(',round(combi$X,2),',',round(combi$Y,2),')') 
 
 # Create a new factor: Morning; Evening; Night
 
@@ -170,12 +170,12 @@ combi$Type[combi$Category == "NON-CRIMINAL"] <- "Non Criminal"
 
 # Back to factor
 
-combi$Dates2 <- factor(combi$Dates2) #Note sure!!
-combi$Year <- factor(combi$Year) #Note sure!!
-combi$Month <- factor(combi$Month) #Note sure!!
-combi$Day <- factor(combi$Day) #Note sure!!
-combi$Week <- factor(combi$MWeek) #Note sure!!
-combi$Hours <- factor(combi$Hours) #Note sure!! (as.numeric?)
+combi$Dates2 <- factor(combi$Dates2) #Not sure!!
+combi$Year <- factor(combi$Year) #Not sure!!
+combi$Month <- factor(combi$Month) #Not sure!!
+combi$Day <- factor(combi$Day) #Not sure!!
+combi$Week <- factor(combi$MWeek) #Not sure!!
+combi$Hours <- factor(combi$Hours) #Not sure!! (as.numeric?)
 combi$Housing <- factor(combi$Housing)  
 combi$Season <- factor(combi$Season)
 combi$Period <- factor(combi$Period)
