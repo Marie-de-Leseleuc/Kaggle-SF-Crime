@@ -207,7 +207,7 @@ head(test)
 
 library(rpart)
 
-fit <- rpart(Category ~ Hours + DayOfWeek + PdDistrict + Address + Loc + Period + 
+fit <- rpart(Category ~ Hours + DayOfWeek + PdDistrict + Loc + Period + 
                Housing + Season + Street + Month + Year + Day , data = train, method = "class"
              , control = rpart.control(minsplit = 200,cp=0))
 
