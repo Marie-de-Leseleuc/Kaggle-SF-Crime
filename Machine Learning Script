@@ -208,7 +208,7 @@ head(test)
 library(rpart)
 
 fit <- rpart(Category ~ Hours + DayOfWeek + PdDistrict + Address + Loc + Period + 
-               Housing + Season + Street + Type + Month + Year + Day , data = train, method = "class"
+               Housing + Season + Street + Month + Year + Day , data = train, method = "class"
              , control = rpart.control(minsplit = 200,cp=0))
 
 # Represent the tree
@@ -245,7 +245,7 @@ library(caret)
         #i = 'ASSAULT'
         response[i]<- 0
         response[i][response$Cat==i,]<- 1
-        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Housing+Season+Street+Type 
+        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Housing+Season+Street 
                  ,data=train, method = "class")
         pred <- predict(fit,test, type = "response")
         submission[i]<-pred
