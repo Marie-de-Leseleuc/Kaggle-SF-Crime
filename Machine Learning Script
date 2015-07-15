@@ -229,6 +229,7 @@ write.csv(submit, file = "RpartPrediction.csv", row.names = FALSE)
    ------------ #Alternative# ---------------
   
 library(caret)
+library(WriteXLS)
 
     # Partition the train document 
     inTrain <- createDataPartition(train$Category,p=0.1,list=F)
