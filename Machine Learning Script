@@ -171,11 +171,11 @@ combi$Type[combi$Category == "NON-CRIMINAL"] <- "Non Criminal"
 # Back to factor
 
 combi$Dates2 <- factor(combi$Dates2) #Not sure!!
-combi$Year <- factor(combi$Year) #Not sure!!
-combi$Month <- factor(combi$Month) #Not sure!!
-combi$Day <- factor(combi$Day) #Not sure!!
-combi$Week <- factor(combi$MWeek) #Not sure!!
-combi$Hours <- factor(combi$Hours) #Not sure!! (as.numeric?)
+combi$Year <- as.numeric(combi$Year) #Not sure!!
+combi$Month <- as.numeric(combi$Month) #Not sure!!
+combi$Day <- as.numeric(combi$Day) #Not sure!!
+combi$Week <- as.numeric(combi$MWeek) #Not sure!!
+combi$Hours <- factor(combi$Hours) #Not sure!! (factor?)
 combi$Housing <- factor(combi$Housing)  
 combi$Season <- factor(combi$Season)
 combi$Period <- factor(combi$Period)
@@ -208,7 +208,7 @@ head(test)
 library(rpart)
 
 fit <- rpart(Category ~ Hours + DayOfWeek + PdDistrict + Loc + Period + 
-               Housing + Season + Street + Month + Year + Day , data = train, method = "class"
+               Season + Street + Month + Year + Day , data = train, method = "class"
              , control = rpart.control(minsplit = 200,cp=0))
 
 # Represent the tree
@@ -229,6 +229,9 @@ write.csv(submit, file = "RpartPrediction.csv", row.names = FALSE)
    ------------ #Alternative# ---------------
   
 library(caret)
+library(WriteXLS)
+
+# Caret Tutorial: https://www.youtube.com/watch?v=7Jbb2ItbTC4
 
     # Partition the train document 
     inTrain <- createDataPartition(train$Category,p=0.1,list=F)
@@ -245,7 +248,7 @@ library(caret)
         #i = 'ASSAULT'
         response[i]<- 0
         response[i][response$Cat==i,]<- 1
-        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Housing+Season+Street 
+        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Season+Street 
                  ,data=train, method = "class")
         pred <- predict(fit,test, type = "response")
         submission[i]<-pred
