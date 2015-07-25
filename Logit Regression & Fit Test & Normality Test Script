@@ -25,6 +25,7 @@ library(aod)
 # Variance - Covariance table/matrix
 round(x = vcov(fitlogit), digits = 4)
 
+
 library(lattice)
 levelplot(vcov(fitlogit))
 
