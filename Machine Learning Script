@@ -247,7 +247,7 @@ library(caret)
         response[i][response$Cat==i,]<- 1
         fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Housing+Season+Street 
                  ,data=train, method = "class")
-        pred <- predict(fit,test, type = "response")
+        pred <- predict(fit,test, type = "prob")
         submission[i]<-pred
         print(paste0(ncol(submission)/length(crime)*100,'% completed'))
       }
