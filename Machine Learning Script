@@ -245,7 +245,7 @@ library(caret)
         #i = 'ASSAULT'
         response[i]<- 0
         response[i][response$Cat==i,]<- 1
-        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hour+Week+Month+Period+Housing+Season+Street 
+        fit<-rpart(response[,i]~PdDistrict+Loc+DayOfWeek+Day+Year+Hours+Week+Month+Period+Housing+Season+Street 
                  ,data=train, method = "class")
         pred <- predict(fit,test, type = "prob")
         submission[i]<-pred
